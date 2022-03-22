@@ -1,0 +1,63 @@
+@import "bulma";
+
+.hero-body {
+  padding-bottom: 2.3em;
+  padding-top: 2em;
+}
+
+.flash {
+  margin-bottom: 1.3em;
+}
+
+.navbar + .section {
+  padding-bottom: 0;
+}
+
+.button.is-primary:focus:not(:active),
+.button.is-primary.is-focused:not(:active) {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
+}
+
+form[action*="auth"] {
+  display: inline-block;
+}
+
+.title > .button {
+  margin-left: 10px;
+}
+
+a:hover {
+  color: darken(#3273dc, 15);
+}
+
+.deletePoll {
+  display: inline-block;
+}
+
+.subtitle + .section {
+  padding-top: 1.2em;
+}
+
+.footer {
+  .column:nth-child(1) {
+    padding-right: 0;
+  }
+  .column:nth-child(2) {
+    padding-left: 0;
+  }
+}

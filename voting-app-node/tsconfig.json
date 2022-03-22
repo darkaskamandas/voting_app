@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "outDir": "build",
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2018"
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*"],
+  "parcelTsPluginOptions": {
+    "transpileOnly": false
+  }
+}

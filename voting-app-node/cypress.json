@@ -1,0 +1,21 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "env": {
+    "node_env": "test",
+    "database": "mongodb://localhost:27017/voting-app-testing",
+    "email": "testing@test.com",
+    "name": "testing",
+    "password": "test123",
+    "passwordRepeat": "test123",
+    "wrongEmail": "wrong@wrong",
+    "wrongName": "testing123",
+    "wrongPassword": "wrong",
+    "wrongPasswordRepeat": "wrong12",
+    "etherealEmail": "t5hrwxtmlbkw2d2v@ethereal.email",
+    "etherealPassword": "3ETa9eQCMKRNpT7FMF"
+  },
+  "projectId": "g8m64m",
+  "video": false
+}

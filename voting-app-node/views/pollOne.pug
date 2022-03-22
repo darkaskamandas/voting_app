@@ -1,0 +1,64 @@
+extends _layout
+
+block content
+  .section
+    .container
+      h1.title.has-text-centered!= poll.name
+      if owner
+        form.deletePoll(action=`/poll/${poll.hashid}?_method=DELETE`, method="post")
+          input(type="hidden", name="_csrf", value=csrfToken)
+          .field
+            .control
+              input.button.is-text.has-text-danger(type="submit", value="Delete Poll", name="delete")
+        a.button.is-text(href= `/poll/edit/${poll.hashid}`) Edit Poll
+      .columns.is-tablet
+        .column.is-5
+          .section
+            h2.title.has-text-centered Vote Options
+            form(action=`/poll/${poll._id}?_method=PATCH`, method="post")
+              - const userOption = userVote && userVote.option
+              input(type="hidden", name="_csrf", value=csrfToken)
+              .field.has-addons
+                .control.is-expanded
+                  .select.is-fullwidth(class=userOption ? 'is-success' : '')
+                    select(name="vote")
+                      option Please choose:
+                      each option in poll.options
+                        option(value=option, required, selected= (option === userOption))!= option
+                .control
+                  input.button.is-primary(type="submit", value="Vote", disabled= (!user || userOption))
+              if userOption
+                p.help.is-success You have already voted on this poll!
+              unless user
+                p.help.is-info
+                  a(href="/login") Please log in to participate in this poll!
+          p.has-text-centered
+            a.button.is-primary(href=`https://twitter.com/intent/tweet?text=${encodeURI(
+              `View ${poll.author.name}'s poll on Voting App!\n${fullUrl}`)}`)
+              span.icon
+                i.fab.fa-twitter
+              span Share on Twitter
+          hr
+          h3.title.has-text-centered Author
+          .columns
+            .column
+              .card
+                .card-content
+                  .media
+                    .media-left
+                      figure.image.is-48x48
+                        img(src=poll.author.avatar, alt=`${poll.author.name}'s avatar`)
+                    .media-content
+                      h4.title.is-4
+                        a.has-text-grey-dark(href= `/poll/user/${poll.authorHashid}`)= poll.author.name
+                      h4.subtitle.is-7= poll.author.email
+                    .media-right.is-hidden-tablet-only
+                      a.button.is-primary(href= `/poll/user/${poll.authorHashid}`)
+                        span User Polls
+        .column.is-7
+          .section
+            canvas#results(width="200", height="170")
+  script.
+    var votes = !{JSON.stringify(votes)};
+    var options = !{JSON.stringify(poll.options)};
+    window.votingAppChart = { votes, options };

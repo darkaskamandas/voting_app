@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strict": true
+  },
+  "parcelTsPluginOptions": {
+    "transpileOnly": false
+  }
+}

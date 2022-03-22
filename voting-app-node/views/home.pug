@@ -1,0 +1,34 @@
+extends _layout
+
+include mixins/_voteCard
+
+block content
+  section.hero.is-primary.is-bold
+    .hero-body
+      .container
+        if currentPath === '/' && categories.length
+          block messages
+            .flash
+              +flash(categories)
+        h1.title.has-text-centered.has-text-grey-darker.is-size-1.has-text-weight-light
+          | Voting App
+        h2.subtitle.has-text-centered.has-text-grey-darker.is-size-4.has-text-weight-light
+          | Simple polls for everyone
+        unless user
+          p.has-text-centered
+            a.button.is-primary.is-large.is-inverted(href="/register")
+              span.has-text-primary Register
+  .section
+    .columns.is-desktop
+      .column
+        h3.title.has-text-centered Latest Polls
+        if latestPolls.length
+          +voteCard(latestPolls)
+        else
+          p.has-text-centered No polls are currently available
+      .column
+        h3.title.has-text-centered Popular Polls
+        if latestPolls.length
+          +voteCard(popularPolls)
+        else
+          p.has-text-centered No polls are currently available
